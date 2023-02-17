@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 public class Usuario {
 	private String nombre;
 	private String fechaNacimiento;
-	private int rut;
+	private String rut;
 
 	/**
 	 * 
@@ -14,10 +14,19 @@ public class Usuario {
 		super();
 	}
 
-	public Usuario(String nombre, String fechaNacimiento, int rut) {
-		setNombre(nombre);
+	/**
+	 * @param nombre
+	 * @param fechaNacimiento
+	 * @param rut
+	 */
+	public Usuario(String nombre, String fechaNacimiento, String rut) {
+		super();
+		if (rut.matches("[0-9]{6,8}")) {
+			this.rut = rut;
+		}
+		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
-		setRut(rut);
+		this.rut = rut;
 	}
 
 	@Override
@@ -59,17 +68,14 @@ public class Usuario {
 	/**
 	 * @return the rut
 	 */
-	public int getRut() {
+	public String getRut() {
 		return rut;
 	}
 
 	/**
 	 * @param rut the rut to set
 	 */
-	public void setRut(int rut) {
-		if (rut >= 99999999) {
-			throw new IllegalArgumentException("El rut debe ser menor a 99999999");
-		}
+	public void setRut(String rut) {
 		this.rut = rut;
 	}
 
