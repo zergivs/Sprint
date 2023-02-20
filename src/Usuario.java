@@ -3,9 +3,10 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public class Usuario {
+	private String rut;
 	private String nombre;
 	private String fechaNacimiento;
-	private String rut;
+	
 
 	/**
 	 * 
@@ -14,20 +15,20 @@ public class Usuario {
 		super();
 	}
 
+	
 	/**
+	 * @param rut
 	 * @param nombre
 	 * @param fechaNacimiento
-	 * @param rut
 	 */
-	public Usuario(String nombre, String fechaNacimiento, String rut) {
+	public Usuario(String rut, String nombre, String fechaNacimiento) {
 		super();
-		if (rut.matches("[0-9]{6,8}")) {
-			this.rut = rut;
-		}
+		this.rut = rut;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
-		this.rut = rut;
 	}
+
+
 
 	@Override
 	public String toString() {

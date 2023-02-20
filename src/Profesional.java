@@ -11,15 +11,21 @@ public class Profesional extends Usuario {
 		super();
 	}
 
+	
 	/**
+	 * @param rut
+	 * @param nombre
+	 * @param fechaNacimiento
 	 * @param titulo
 	 * @param fechaIngreso
 	 */
-	public Profesional(String titulo, String fechaIngreso) {
-		super();
+	public Profesional(String rut, String nombre, String fechaNacimiento, String titulo, String fechaIngreso) {
+		super(rut, nombre, fechaNacimiento);
 		this.titulo = titulo;
 		this.fechaIngreso = fechaIngreso;
 	}
+
+
 
 	@Override
 	public String toString() {

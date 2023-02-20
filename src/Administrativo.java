@@ -11,15 +11,22 @@ public class Administrativo extends Usuario {
 		super();
 	}
 
+	
+
 	/**
+	 * @param rut
+	 * @param nombre
+	 * @param fechaNacimiento
 	 * @param area
 	 * @param experienciaPrevia
 	 */
-	public Administrativo(String area, String experienciaPrevia) {
-		super();
-		Area = area;
+	public Administrativo(String rut, String nombre, String fechaNacimiento, String area, String experienciaPrevia) {
+		super(rut, nombre, fechaNacimiento);
+		this.Area = area;
 		this.experienciaPrevia = experienciaPrevia;
 	}
+
+
 
 	@Override
 	public String toString() {
