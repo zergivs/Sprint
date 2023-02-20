@@ -13,7 +13,7 @@ public class Main {
 		while (menu) {
 
 			System.out.println("");
-			System.out.println("Seleccione una opcion del 1 al 9");
+			System.out.println("Seleccione una opcion del 1 al 9: ");
 			System.out.println("");
 			System.out.println("1.- Ingresar nuevo cliente.");
 			System.out.println("2.- Ingresar nuevo administrativo.");

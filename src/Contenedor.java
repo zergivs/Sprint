@@ -5,6 +5,7 @@ public class Contenedor implements Asesoria {
 
 	public static ArrayList<Usuario> users = new ArrayList<Usuario>();
 	public static ArrayList<Capacitacion> capacitacion = new ArrayList<Capacitacion>();
+	private String sistemaSalud;
 
 	@Override
 	public void analizarUsuario() {
@@ -15,25 +16,102 @@ public class Contenedor implements Asesoria {
 	public void addCliente() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\tINGRESAR NUEVO CLIENTE ");
-		System.out.print("Ingrese RUT: ");
-		String rut = input.nextLine();
-		System.out.print("Ingrese nombre: ");
-		String nombre = input.nextLine();
-		System.out.print("Ingrese apellido: ");
-		String apellido = input.nextLine();
-		System.out.print("Ingrese telefono: ");
-		String telefono = input.nextLine();
-		System.out.print("ingrese AFP: ");
-		String afp = input.nextLine();
-		System.out.print("ingrese sistema de salud: ");
-		String sistemaSalud = input.nextLine();
-		System.out.print("Ingrese direccion: ");
-		String direccion = input.nextLine();
-		System.out.print("Ingrese comuna: ");
-		String comuna = input.nextLine();
-		System.out.print("Ingrese edad: ");
-		int edad = input.nextInt();
-		input.nextLine();
+
+		// Validate RUT
+		String rut;
+		do {
+			System.out.print("Ingrese RUT (menor a 99999999): ");
+			rut = input.nextLine();
+			if (rut.isEmpty() || Integer.parseInt(rut) >= 99999999) {
+				System.out.println("ERROR: El RUT ingresado es invalido.");
+			}
+		} while (rut.isEmpty() || Integer.parseInt(rut) >= 99999999);
+
+		// Validate nombre
+		String nombre;
+		do {
+			System.out.print("Ingrese nombre (entre 5 y 30 caracteres): ");
+			nombre = input.nextLine();
+			if (nombre.length() < 5 || nombre.length() > 30) {
+				System.out.println("ERROR: El nombre ingresado es invalido.");
+			}
+		} while (nombre.length() < 5 || nombre.length() > 30);
+
+		// Validate apellido
+		String apellido;
+		do {
+			System.out.print("Ingrese apellido (entre 5 y 30 caracteres): ");
+			apellido = input.nextLine();
+			if (apellido.length() < 5 || apellido.length() > 30) {
+				System.out.println("ERROR: El apellido ingresado es invalido.");
+			}
+		} while (apellido.length() < 5 || apellido.length() > 30);
+
+		// Validate telefono
+		String telefono;
+		do {
+			System.out.print("Ingrese telefono: ");
+			telefono = input.nextLine();
+			if (telefono.isEmpty()) {
+				System.out.println("ERROR: El telefono ingresado es invalido.");
+			}
+		} while (telefono.isEmpty());
+
+		// Validate afp
+		String afp;
+		do {
+			System.out.print("Ingrese AFP (entre 4 y 30 caracteres): ");
+			afp = input.nextLine();
+			if (afp.length() < 4 || afp.length() > 30) {
+				System.out.println("ERROR: La AFP ingresada es invalida.");
+			}
+		} while (afp.length() < 4 || afp.length() > 30);
+
+		String sistemaSalud;
+
+		System.out.println("Ingrese sistema de salud, 1 para Fonasa 2 para Isapre");
+		sistemaSalud = input.nextLine();
+
+		if (sistemaSalud == "1") {
+			this.sistemaSalud = "Fonasa";
+		}
+		if (sistemaSalud == "2") {
+			this.sistemaSalud = "Isapre";
+		} else {
+			System.out.println("Opcion ingresada es invalida.");
+		}
+
+		// Validate direccion
+		String direccion;
+		do {
+			System.out.print("Ingrese direccion (maximo 70 caracteres): ");
+			direccion = input.nextLine();
+			if (direccion.length() > 70) {
+				System.out.println("ERROR: La dirección ingresada es inválida.");
+			}
+		} while (direccion.length() > 70);
+
+		// Validate comuna
+		String comuna;
+		do {
+			System.out.print("Ingrese comuna (maximo 50 caracteres): ");
+			comuna = input.nextLine();
+			if (comuna.length() > 50) {
+				System.out.println("ERROR: La comuna ingresada es inválida.");
+			}
+		} while (comuna.length() > 50);
+
+		// Validate edad
+		int edad;
+		do {
+			System.out.print("Ingrese edad (entre 0 y 150): ");
+			edad = input.nextInt();
+			input.nextLine();
+			if (edad < 0 || edad > 150) {
+				System.out.println("ERROR: La edad ingresada es inválida.");
+			}
+		} while (edad < 0 || edad > 150);
+
 		Cliente cliente = new Cliente(rut, nombre, apellido, telefono, afp, sistemaSalud, direccion, comuna, edad);
 		users.add(cliente);
 		System.out.println("Nuevo cliente agregado exitosamente.");
@@ -42,10 +120,25 @@ public class Contenedor implements Asesoria {
 	public void addAdmin() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("\tINGRESAR NUEVO ADMINISTRATIVO ");
-		System.out.print("Ingrese RUT: ");
-		String rut = input.nextLine();
-		System.out.print("Ingrese nombre: ");
-		String nombre = input.nextLine();
+		// Validate RUT
+		String rut;
+		do {
+			System.out.print("Ingrese RUT (menor a 99999999): ");
+			rut = input.nextLine();
+			if (rut.isEmpty() || Integer.parseInt(rut) >= 99999999) {
+				System.out.println("ERROR: El RUT ingresado es invalido.");
+			}
+		} while (rut.isEmpty() || Integer.parseInt(rut) >= 99999999);
+		;
+		// Validate nombre
+		String nombre;
+		do {
+			System.out.print("Ingrese nombre (entre 5 y 30 caracteres): ");
+			nombre = input.nextLine();
+			if (nombre.length() < 5 || nombre.length() > 30) {
+				System.out.println("ERROR: El nombre ingresado es invalido.");
+			}
+		} while (nombre.length() < 5 || nombre.length() > 30);
 		System.out.print("Ingrese fecha nacimiento: ");
 		String fechaNacimiento = input.nextLine();
 		System.out.print("Ingrese area: ");
